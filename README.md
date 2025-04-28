@@ -36,10 +36,15 @@ docker run --name WordPress \
 
 ### Переменные:
 `DATABASE_NAME` - необходимо указать название базы данных к которой будет подключаться WordPress.
+
 `DATABASE_USER` - имя для доступа к базе данных.
+
 `DATABASE_PASSWORD` - пароль для подключения к базе данных.
+
 `DATABASE_IP` - IP \ DNS имя сервера базы данных.
+
 `DB_CHARSET` - кодировка базы данных, по умолчанию `UTF8`. 
+
 `DB_TABLE_PREFIX` - префикс таблиц, которые создаст и будет использовать WordPress в базе данных. По умолчанию `wp_`
 
 ### Директории (volumes)
@@ -137,11 +142,17 @@ volumes:
 ```
 
 `DATABASE_NAME` и `MARIADB_DATABASE` - указать имя базы данных, которая будет создана и использована WordPress.
+
 `DATABASE_USER` и `MARIADB_USER` - указать имя пользователя, который будет создан и использован WordPress для доступа к базе данных.
+
 `DATABASE_PASSWORD` и `MARIADB_PASSWORD` - указать пароль пользователя, который будет создан и использован WordPress для доступа к базе данных.
+
 `DATABASE_IP` - оставить как есть, будет использован IP запущенного контейнера с MariaDB. Используется для подключения WordPress к базе данных.
+
 `DB_CHARSET` - кодировка базы данных.
+
 `DB_TABLE_PREFIX` - префикс таблиц WordPress
+
 `MARIADB_ROOT_PASSWORD` - рутовый пароль для MariaDB.
 
 Далее запустить `docker compose up` для запуска контейнеров. 
