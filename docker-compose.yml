@@ -1,0 +1,45 @@
+services:
+  web_wordpress:
+    image: my_wd:01
+    container_name: web_wordpress
+    volumes:
+      - wd_nginx_data:/etc/nginx/
+      - wd_www_data:/var/www/
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: unless-stopped
+    environment:
+      - DATABASE_NAME=wdpress
+      - DATABASE_USER=bl00dwolf
+      - DATABASE_PASSWORD=bl00dwolf
+      - DATABASE_IP=db_mariadb
+      - DB_CHARSET=utf8
+      - DB_TABLE_PREFIX=wp_
+    depends_on:
+      - db_mariadb
+    networks:
+      - wordpress_net
+
+  db_mariadb:
+    image: mariadb:latest
+    container_name: db_mariadb
+    ports:
+      - '3306:3306'
+    restart: unless-stopped
+    environment:
+      - MARIADB_USER=bl00dwolf
+      - MARIADB_PASSWORD=bl00dwolf
+      - MARIADB_DATABASE=wdpress
+      - MARIADB_ROOT_PASSWORD=bl00dwolf
+    networks:
+      - wordpress_net
+
+networks:
+  wordpress_net:
+    name: wordpress_net
+    driver: bridge
+
+volumes:
+  wd_nginx_data:
+  wd_www_data:
