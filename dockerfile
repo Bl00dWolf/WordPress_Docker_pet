@@ -22,7 +22,9 @@ RUN tar -xvf wordpress-6.8_ru.tar.gz && \
 
 # Перваночальная настройка wordpress
 COPY files/wpconf.sh .
-RUN chmod +x wpconf.sh && \
+RUN curl https://api.wordpress.org/secret-key/1.1/salt/ >> ./salt_keys.txt && \
+    chmod 777 ./salt_keys.txt && \
+    chmod +x wpconf.sh && \
     ./wpconf.sh
 
 # Конфигурация NGINX

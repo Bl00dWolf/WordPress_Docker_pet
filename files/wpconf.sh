@@ -51,7 +51,7 @@ define( 'DB_COLLATE', '' );
  */
 EOF
 
-curl https://api.wordpress.org/secret-key/1.1/salt/ >> /var/www/html/wp-config.php
+cat /home/ubuntu/salt_keys.txt >> /var/www/html/wp-config.php
 
 cat <<EOF >> /var/www/html/wp-config.php
 
