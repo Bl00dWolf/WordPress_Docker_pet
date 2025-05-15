@@ -176,3 +176,5 @@ volumes:
 `files/wordpress-6.8_ru.tar.gz` - архив с релизом WordPress 6.8. Можно заменить в `dockerfile` директиву с данного образа, на использования curl скачку актуального, если если требуется: `RUN curl https://ru.wordpress.org/latest-ru_RU.zip`
 
 `files/wpconf.sh` - основной файл конфигурации WordPress, содержит данные с использованием переменных среды для работы WordPress и первого запуска.
+
+Внутри контейнера создается единоразово файл `/home/ubuntu/salt_keys.txt` - файл содержит в себе salt ключи полученные через curl от WordPress при билде образа из `dockerfile`. Далее эти ключи используются в `wpconf.sh`. 
